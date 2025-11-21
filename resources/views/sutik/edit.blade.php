@@ -24,8 +24,26 @@
             </div>
 
             <div class="field">
+                <input type="hidden" name="dijazott" value="0">
                 <input type="checkbox" id="dijazott" name="dijazott" value="1" {{ old('dijazott', $suti->dijazott) ? 'checked' : '' }}>
                 <label for="dijazott">Magyarország Tortája díjas</label>
+            </div>
+
+            <hr style="margin: 2rem 0;">
+            <h3>💰 Ár szerkesztése</h3>
+
+            @php
+                $elsoAr = $suti->arak->first();
+            @endphp
+
+            <div class="field">
+                <label for="ar_ertek">Ár (Ft)</label>
+                <input type="number" name="ar_ertek" id="ar_ertek" value="{{ old('ar_ertek', $elsoAr->ertek ?? '') }}" placeholder="pl. 500">
+            </div>
+
+            <div class="field">
+                <label for="ar_egyseg">Egység</label>
+                <input type="text" name="ar_egyseg" id="ar_egyseg" value="{{ old('ar_egyseg', $elsoAr->egyseg ?? '') }}" placeholder="pl. szelet">
             </div>
         </div>
 
